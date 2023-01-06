@@ -1,0 +1,4 @@
+namespace: sample-kust
+kustomize:
+  # To use a kustomization.yaml different from the one in the root folder
+  dir: ""
