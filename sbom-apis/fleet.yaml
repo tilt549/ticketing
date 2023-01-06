@@ -2,9 +2,9 @@ namespace: sample-helm
 # Custom helm options
 helm:
   # The release name to use. If empty a generated release name will be used
-  releaseName: httpbin
+  releaseName: sbom-apis
   # The directory of the chart in the repo.
-  chart: "github.com/twingao/httpbin"
+  chart: "github.com/sbom-apis"
   # An https to a valid Helm repository to download the chart from
   repo: ""
   # Used if repo is set to look up the version of the chart
