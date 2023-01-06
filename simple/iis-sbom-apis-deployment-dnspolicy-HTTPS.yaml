@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: iis-sbom-apis
+  labels:
+    app: iis-sbom-apis
+spec:
+  ports:
+    # the port that this service should serve on
+    - port: 443
+      targetPort: 443
+  selector:
+    app: iis-sbom-apis
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iis-sbom-apis
+  labels:
+    app: iis-sbom-apis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: iis-sbom-apis
+  template:
+    metadata:
+      labels:
+        app: iis-sbom-apis
+    spec:
+      dnsPolicy: "None"
+      dnsConfig:
+       nameservers:
+        - 192.168.100.104
+       searches:
+        - atls2.intg
+       options:
+        - name: ndots
+          value: "2"
+        - name: edns0
+      nodeSelector:
+        kubernetes.io/os: windows
+      containers:
+      - name: iis-sbom-apis
+        image: pptaz/iis-sbom-apis:0.0.20
+        ports:
+        - containerPort: 443
+        lifecycle:
+          postStart:
+            exec:
+              command:
+              - "c:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+              - -command
+              - " c:\\PS\\AppendIPAddress.ps1 -pAutoTestPathFile 'D:\\web\\SBOM\\SOMebkOnline.API\\AutoTest\\SOMebkOnline.APIS.txt' ;"
