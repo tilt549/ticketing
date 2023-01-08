@@ -5,7 +5,7 @@ metadata:
   labels:
     app: iis-vad-apis
 spec:
-  replicas: "{{ .Values.appReplicas }}"
+  replicas: {{ .Values.appReplicas }}
   selector:
     matchLabels:
       app: iis-vad-apis
