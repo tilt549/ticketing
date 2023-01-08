@@ -17,7 +17,7 @@ spec:
       dnsPolicy: "None"
       dnsConfig:
        nameservers:
-        - 192.168.100.104
+        - {{ .Values.ticketingDns }}
        searches:
         - atls2.intg
        options:
