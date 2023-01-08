@@ -28,7 +28,7 @@ spec:
         kubernetes.io/os: windows
       containers:
       - name: iis-vad-apis
-        image: <image>:<tag> # {"$imagescan": "test-scan"}
+        image: pptaz/iis-vad-apis:0.0.19
         ports:
         - containerPort: 443
         lifecycle:
