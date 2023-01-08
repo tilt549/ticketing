@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iis-sbom-apis
+  labels:
+    app: iis-sbom-apis
+spec:
+  replicas: {{ .Values.appReplicas }}
+  selector:
+    matchLabels:
+      app: iis-sbom-apis
+  template:
+    metadata:
+      labels:
+        app: iis-sbom-apis
+    spec:
+      dnsPolicy: "None"
+      dnsConfig:
+       nameservers:
+        - {{ .Values.ticketing.dns.server }}
+       searches:
+        - {{ .Values.ticketing.dns.domain }}
+       options:
+        - name: ndots
+          value: "2"
+        - name: edns0
+      nodeSelector:
+        kubernetes.io/os: windows
+      containers:
+      - name: iis-sbom-apis
+        image: pptaz/iis-sbom-apis:0.0.20
+        ports:
+        - containerPort: 443
+        lifecycle:
+          postStart:
+            exec:
+              command:
+              - "c:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+              - -command
+              - " c:\\PS\\AppendIPAddress.ps1 -pAutoTestPathFile 'D:\\web\\SBOM\\SOMebkOnline.API\\AutoTest\\SOMebkOnline.APIS.txt' ;"
