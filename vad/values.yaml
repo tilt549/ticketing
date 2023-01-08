@@ -1,4 +1,4 @@
 replication: true
-replicas: 1
+appReplicas: 1
 serviceType: ClusterIP
 

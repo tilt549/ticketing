@@ -3,7 +3,8 @@ targetCustomizations:
 - name: dev
   helm:
     values:
-      replicas: 1
+      serviceType: ClusterIP
+      appReplicas: 1
   clusterSelector:
     matchLabels:
       env: dev
@@ -11,7 +12,8 @@ targetCustomizations:
 - name: test
   helm:
     values:
-      replicas: 2
+      serviceType: ClusterIP
+      appReplicas: 2
   clusterSelector:
     matchLabels:
       env: test
@@ -19,8 +21,8 @@ targetCustomizations:
 - name: prod
   helm:
     values:
-      serviceType: LoadBalancer
-      replicas: 3
+      serviceType: ClusterIP
+      appReplicas: 3
   clusterSelector:
     matchLabels:
       env: prod
