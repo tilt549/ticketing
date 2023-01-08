@@ -9,7 +9,6 @@ targetCustomizations:
         dns:
           server: 192.168.100.104
           domain: atls2.intg
-
   clusterSelector:
     matchLabels:
       env: dev
