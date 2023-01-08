@@ -17,9 +17,9 @@ spec:
       dnsPolicy: "None"
       dnsConfig:
        nameservers:
-        - {{ .Values.ticketingDns }}
+        - {{ .Values.ticketing.dns.server }}
        searches:
-        - atls2.intg
+        - {{ .Values.ticketing.dns.domain }}
        options:
         - name: ndots
           value: "2"

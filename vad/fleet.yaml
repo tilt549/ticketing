@@ -5,7 +5,11 @@ targetCustomizations:
     values:
       serviceType: ClusterIP
       appReplicas: 1
-      ticketingDns: 192.168.100.99
+      ticketing:
+        dns:
+          server: 192.168.100.104
+          domain: atls2.intg
+
   clusterSelector:
     matchLabels:
       env: dev
@@ -15,7 +19,10 @@ targetCustomizations:
     values:
       serviceType: ClusterIP
       appReplicas: 2
-      ticketingDns: 192.168.101.104
+      ticketing:
+        dns:
+          server: 192.168.100.104
+          domain: atls2.intg
   clusterSelector:
     matchLabels:
       env: test
@@ -25,7 +32,10 @@ targetCustomizations:
     values:
       serviceType: ClusterIP
       appReplicas: 3
-      ticketingDns: 192.168.101.104
+      ticketing:
+        dns:
+          server: 192.168.100.104
+          domain: atls2.intg
   clusterSelector:
     matchLabels:
       env: prod
