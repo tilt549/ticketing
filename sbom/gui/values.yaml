@@ -1,0 +1,9 @@
+replication: true
+appReplicas: 1
+serviceType: ClusterIP
+ticketing:
+  dns:
+    server: 192.168.100.104
+    domain: atls2.intg
+
+
