@@ -14,6 +14,19 @@ targetCustomizations:
     matchLabels:
       env: dev
 
+- name: valm
+  helm:
+    values:
+      serviceType: ClusterIP
+      appReplicas: 1
+      ticketing:
+        dns:
+          server: 172.24.10.43
+          domain: kube1.valm
+  clusterSelector:
+    matchLabels:
+      env: dev
+
 - name: test
   helm:
     values:
