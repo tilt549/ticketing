@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: iis-vad-apis
+  name: vad-apis
   labels:
-    app: iis-vad-apis
+    app: vad-apis
 spec:
   type: "{{ .Values.serviceType }}"
   ports:
@@ -11,4 +11,4 @@ spec:
     - port: 443
       targetPort: 443
   selector:
-    app: iis-vad-apis
+    app: vad-apis

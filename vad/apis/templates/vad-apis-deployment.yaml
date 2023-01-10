@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: iis-vad-apis
+  name: vad-apis
   labels:
-    app: iis-vad-apis
+    app: vad-apis
 spec:
   replicas: {{ .Values.appReplicas }}
   selector:
     matchLabels:
-      app: iis-vad-apis
+      app: vad-apis
   template:
     metadata:
       labels:
-        app: iis-vad-apis
+        app: vad-apis
     spec:
       dnsPolicy: "None"
       dnsConfig:
@@ -27,8 +27,8 @@ spec:
       nodeSelector:
         kubernetes.io/os: windows
       containers:
-      - name: iis-vad-apis
-        image: pptaz/iis-vad-apis:0.0.19
+      - name: vad-apis
+        image: pptaz/iis-vad-apis:0.0.10
         ports:
         - containerPort: 443
         lifecycle:

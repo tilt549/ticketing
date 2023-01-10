@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: iis-vad-apis-ws-vad
+  name: vad-apis-ws-vad
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "https"
     nginx.ingress.kubernetes.io/rewrite-target: /WS_VAD/$2
@@ -13,7 +13,7 @@ spec:
       paths:
       - backend:
           service:
-            name: iis-vad-apis
+            name: vad-apis
             port:
               number: 443
         path: /WS_VAD(/|$)(.*)
@@ -21,12 +21,12 @@ spec:
   tls:
   - hosts:
     - sbil-api-k8s-t.{{ .Values.ticketing.dns.domain }}
-    secretName: cert-k8s
+    secretName: sbil-api-k8s-t.{{ .Values.ticketing.dns.domain }}
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: iis-vad-apis-ws-vad-data
+  name: vad-apis-ws-vad-data
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "https"
     nginx.ingress.kubernetes.io/rewrite-target: /WS_VAD_DATA/$2
@@ -38,7 +38,7 @@ spec:
       paths:
       - backend:
           service:
-            name: iis-vad-apis
+            name: vad-apis
             port:
               number: 443
         path: /WS_VAD_DATA(/|$)(.*)
@@ -46,12 +46,12 @@ spec:
   tls:
   - hosts:
     - sbil-api-k8s-t.{{ .Values.ticketing.dns.domain }}
-    secretName: cert-k8s
+    secretName: sbil-api-k8s-t.{{ .Values.ticketing.dns.domain }}
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: iis-vad-apis-ws-vad-media
+  name: vad-apis-ws-vad-media
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "https"
     nginx.ingress.kubernetes.io/rewrite-target: /WS_VAD_MEDIA/$2
@@ -63,7 +63,7 @@ spec:
       paths:
       - backend:
           service:
-            name: iis-vad-apis
+            name: vad-apis
             port:
               number: 443
         path: /WS_VAD_MEDIA(/|$)(.*)
@@ -71,12 +71,12 @@ spec:
   tls:
   - hosts:
     - sbil-api-k8s-t.{{ .Values.ticketing.dns.domain }}
-    secretName: cert-k8s
+    secretName: sbil-api-k8s-t.{{ .Values.ticketing.dns.domain }}
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: iis-vad-apis-ws-vad-equipment
+  name: vad-apis-ws-vad-equipment
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "https"
     nginx.ingress.kubernetes.io/rewrite-target: /WS_VAD_EQUIPMENT/$2
@@ -88,7 +88,7 @@ spec:
       paths:
       - backend:
           service:
-            name: iis-vad-apis
+            name: vad-apis
             port:
               number: 443
         path: /WS_VAD_EQUIPMENT(/|$)(.*)
@@ -96,5 +96,5 @@ spec:
   tls:
   - hosts:
     - sbil-api-k8s-t.{{ .Values.ticketing.dns.domain }}
-    secretName: cert-k8s
+    secretName: sbil-api-k8s-t.{{ .Values.ticketing.dns.domain }}
 
