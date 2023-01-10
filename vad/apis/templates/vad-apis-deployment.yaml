@@ -28,7 +28,7 @@ spec:
         kubernetes.io/os: windows
       containers:
       - name: vad-apis
-        image: pptaz/iis-vad-apis:0.0.10
+        image: pptaz/vad-apis:0.0.10
         ports:
         - containerPort: 443
         lifecycle:
