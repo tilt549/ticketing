@@ -1,0 +1,9 @@
+replication: true
+appReplicas: 1
+serviceType: ClusterIP
+ticketing:
+  dns:
+    server: 172.24.10.43
+    domain: kube1.valm
+
+
