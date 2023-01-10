@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: iis-sbom-api
+  name: sbom-api
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/rewrite-target: /SOMebkOnline.API/$2
@@ -13,7 +13,7 @@ spec:
       paths:
       - backend:
           service:
-            name: iis-sbom-api
+            name: sbom-api
             port:
               number: 80
         path: /SOMebkOnline.API(/|$)(.*)
@@ -21,4 +21,4 @@ spec:
   tls:
   - hosts:
     - sbil-api-k8s-t.{{ .Values.ticketing.dns.domain }}
-    secretName: cert-k8s
+    secretName: sbil-api-k8s-t.{{ .Values.ticketing.dns.domain }}

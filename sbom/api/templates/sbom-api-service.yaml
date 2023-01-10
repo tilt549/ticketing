@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: iis-sbom-api
+  name: sbom-api
   labels:
-    app: iis-sbom-api
+    app: sbom-api
 spec:
   type: "{{ .Values.serviceType }}"
   ports:
@@ -11,4 +11,4 @@ spec:
     - port: 80
       targetPort: 80
   selector:
-    app: iis-sbom-api
+    app: sbom-api
