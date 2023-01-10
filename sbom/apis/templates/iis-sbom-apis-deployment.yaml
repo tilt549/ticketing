@@ -28,7 +28,7 @@ spec:
         kubernetes.io/os: windows
       containers:
       - name: sbom-apis
-        image: rancher.kube1.valm/sbom-apis:0.0.2
+        image: rancher.kube1.valm:5000/sbom-apis:0.0.2
         ports:
         - containerPort: 443
         lifecycle:
