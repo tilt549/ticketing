@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: iis-sbom-apis
+  name: sbom-apis
   labels:
-    app: iis-sbom-apis
+    app: sbom-apis
 spec:
   replicas: {{ .Values.appReplicas }}
   selector:
     matchLabels:
-      app: iis-sbom-apis
+      app: sbom-apis
   template:
     metadata:
       labels:
-        app: iis-sbom-apis
+        app: sbom-apis
     spec:
       dnsPolicy: "None"
       dnsConfig:
@@ -27,8 +27,8 @@ spec:
       nodeSelector:
         kubernetes.io/os: windows
       containers:
-      - name: iis-sbom-apis
-        image: pptaz/iis-sbom-apis:0.0.20
+      - name: sbom-apis
+        image: rancher.kube1.valm/sbom-apis:0.0.2
         ports:
         - containerPort: 443
         lifecycle:
