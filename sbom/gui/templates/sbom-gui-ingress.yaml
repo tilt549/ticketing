@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: iis-sbom-gui
+  name: sbom-gui
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "https"
     nginx.ingress.kubernetes.io/rewrite-target: /SOMebk.GUI/$2
@@ -14,7 +14,7 @@ spec:
       paths:
       - backend:
           service:
-            name: iis-sbom-gui
+            name: sbom-gui
             port:
               number: 443
         path: /SOMebk.GUI(/|$)(.*)
@@ -22,4 +22,4 @@ spec:
   tls:
   - hosts:
     - sbil-api-k8s-t.{{ .Values.ticketing.dns.domain }}
-    secretName: cert-k8s
+    secretName: sbil-api-k8s-t.{{ .Values.ticketing.dns.domain }}

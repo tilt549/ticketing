@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: iis-sbom-gui
+  name: sbom-gui
   labels:
-    app: iis-sbom-gui
+    app: sbom-gui
 spec:
   replicas: {{ .Values.appReplicas }}
   selector:
     matchLabels:
-      app: iis-sbom-gui
+      app: sbom-gui
   template:
     metadata:
       labels:
-        app: iis-sbom-gui
+        app: sbom-gui
     spec:
       dnsPolicy: "None"
       dnsConfig:
@@ -27,8 +27,8 @@ spec:
       nodeSelector:
         kubernetes.io/os: windows
       containers:
-      - name: iis-sbom-gui
-        image: pptaz/iis-sbom-gui:0.0.20
+      - name: sbom-gui
+        image: pptaz/sbom-gui:0.0.8
         ports:
         - containerPort: 443
         lifecycle:

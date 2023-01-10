@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: iis-sbom-gui
+  name: sbom-gui
   labels:
-    app: iis-sbom-gui
+    app: sbom-gui
 spec:
   type: "{{ .Values.serviceType }}"
   ports:
@@ -11,4 +11,4 @@ spec:
     - port: 443
       targetPort: 443
   selector:
-    app: iis-sbom-gui
+    app: sbom-gui
