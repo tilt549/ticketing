@@ -9,7 +9,7 @@ targetCustomizations:
       ticketing:
         dns:
           server: 192.168.100.104
-          domain: atls2.intg
+          domain: kube1.dev
   clusterSelector:
     matchLabels:
       env: dev
@@ -35,7 +35,7 @@ targetCustomizations:
       ticketing:
         dns:
           server: 192.168.100.104
-          domain: atls2.intg
+          domain: kube1.test
   clusterSelector:
     matchLabels:
       env: test
@@ -48,7 +48,7 @@ targetCustomizations:
       ticketing:
         dns:
           server: 192.168.100.104
-          domain: atls2.intg
+          domain: kube1.prod
   clusterSelector:
     matchLabels:
       env: prod

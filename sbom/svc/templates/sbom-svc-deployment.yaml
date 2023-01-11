@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sbom-gui
+  name: sbom-svc
   labels:
-    app: sbom-gui
+    app: sbom-svc
 spec:
   replicas: {{ .Values.appReplicas }}
   selector:
     matchLabels:
-      app: sbom-gui
+      app: sbom-svc
   template:
     metadata:
       labels:
-        app: sbom-gui
+        app: sbom-svc
     spec:
       dnsPolicy: "None"
       dnsConfig:
@@ -27,14 +27,7 @@ spec:
       nodeSelector:
         kubernetes.io/os: windows
       containers:
-      - name: sbom-gui
-        image: rancher.kube1.valm:5000/sbom-gui:0.0.8
+      - name: sbom-svc
+        image: rancher.kube1.valm:5000/sbom-svc:0.0.6
         ports:
-        - containerPort: 443
-        lifecycle:
-          postStart:
-            exec:
-              command:
-              - "c:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
-              - -command
-              - " c:\\PS\\AppendIPAddress.ps1 -pAutoTestPathFile 'D:\\web\\SBOM\\SOMebk.GUI\\AutoTest\\SOMebk.GUI.txt' ;"
+        - containerPort: 80
