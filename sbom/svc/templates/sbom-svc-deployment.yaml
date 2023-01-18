@@ -28,6 +28,64 @@ spec:
         kubernetes.io/os: windows
       containers:
       - name: sbom-svc
-        image: rancher.kube1.valm:5000/sbom-svc:0.0.6
+        image: rancher.kube1.valm:5000/sbom-svc
+        volumeMounts:
+        - name: all-in-one
+          mountPath: "/config-volume"
+          readOnly: true
         ports:
         - containerPort: 80
+        lifecycle:
+          postStart:
+            exec:
+              command:
+              - "c:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+              - -command
+              - " c:\\config-volume\\Postinstall\\run.ps1 ;"             
+              - "c:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+              - -command
+              - " Import-Module C:\\PS\\FakeCmdlet.psm1 -Force ; Z:\\SocleTI\\Deploy\\App\\CreateDnsApacheIIS-4.42.0.0.ps1 -gDeploy $True -gJsonFileName 'API.json' -gFirstPortBindingValue 443 ;"
+              - "c:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+              - -command
+              - " Z:\\SocleTI\\Deploy\\Media\\deploy-2.33.0.0.ps1 $True 'API.json' 'reinstall' ;"
+
+      volumes:
+        - name: all-in-one
+          projected:
+            sources:
+            - secret:
+                name: ticketing-windows-users
+                items:
+                  - key: jobs
+                    path: users/jobs.pw
+                  - key: webuser
+                    path: users/webuser.pw
+            - configMap:
+                name: ticketing-root-ca.crt
+                items:
+                  - key: ca.crt
+                    path: ca/ca.crt            
+            - configMap:
+                name: pod-postinstall
+                items:
+                  - key: run.ps1
+                    path: Postinstall/run.ps1            
+            - configMap:
+                name: platform-config
+                items:
+                  - key: Accounts.xml
+                    path: Config/Accounts.xml           
+                  - key: config.json
+                    path: Config/config.json           
+                  - key: Fmk.xml
+                    path: Config/Fmk.xml           
+                  - key: Oracle.xml
+                    path: Config/Oracle.xml           
+                  - key: Deploy.Acc.Accounts.xml
+                    path: Config/Deploy/Acc/Accounts.xml          
+                  - key: Deploy.Acc.Fmk.xml
+                    path: Config/Deploy/Acc/Fmk.xml          
+                  - key: Deploy.Acc.Oracle.xml
+                    path: Config/Deploy/Acc/Oracle.xml          
+                  - key: Deploy.Acc.Windows.xml
+                    path: Config/Deploy/Acc/Windows.xml          
