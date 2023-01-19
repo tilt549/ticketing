@@ -1,5 +1,15 @@
 namespace: default
 
+helm:
+  releaseName: agileplanner
+  chart: ""
+  repo: ""
+  version: ""
+  force: false
+  timeoutSeconds: 0
+  values:
+    replicaCount: 1
+    
 imageScans:
 # specify the policy to retrieve images, can be semver or alphabetical order 
 - policy: 
@@ -16,7 +26,10 @@ imageScans:
 
   # Specify the tag name, it has to be unique in the same bundle
   tagName: test-scan
-  
+
+  # Specify the scan interval
+  interval: 30s   
+
 targetCustomizations:
 - name: dev
   helm:
