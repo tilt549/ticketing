@@ -12,7 +12,7 @@ imageScans:
       order: asc 
 
   # specify images to scan
-  image: "rancher.kube1.valm:5000/sbom-api" 
+  image: "pptaz/sbom-api" 
 
   # Specify the tag name, it has to be unique in the same bundle
   tagName: test-scan
