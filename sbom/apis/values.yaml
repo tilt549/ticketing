@@ -1,5 +1,5 @@
 repository: rancher.kube1.valm:5000
-tagVersion: tilt
+tagVersion: latest
 replication: true
 appReplicas: 1
 serviceType: ClusterIP
