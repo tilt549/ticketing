@@ -19,7 +19,7 @@ spec:
         kubernetes.io/os: windows
       containers:
       - name: sbom-svc
-        image: rancher.kube1.valm:5000/sbom-svc
+        image: {{ .Values.repository }}/sbom-svc
         volumeMounts:
         - name: all-in-one
           mountPath: "/config-volume"
