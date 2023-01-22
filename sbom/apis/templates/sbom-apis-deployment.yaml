@@ -47,13 +47,6 @@ spec:
         - name: all-in-one
           projected:
             sources:
-            - secret:
-                name: ticketing-windows-users
-                items:
-                  - key: jobs
-                    path: users/jobs.pw
-                  - key: webuser
-                    path: users/webuser.pw
             - configMap:
                 name: ticketing-root-ca.crt
                 items:
