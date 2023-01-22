@@ -28,7 +28,7 @@ spec:
         kubernetes.io/os: windows
       containers:
       - name: vad-apis
-        image: rancher.kube1.valm:5000/vad-apis
+        image: {{ .Values.repository }}/vad-apis:{{ .Values.tagVersion }}
         volumeMounts:
         - name: all-in-one
           mountPath: "/config-volume"
@@ -39,8 +39,6 @@ spec:
           postStart:
             exec:
               command:
-              - "c:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
-              - -command
               - "c:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
               - -command
               - " c:\\config-volume\\Postinstall\\run.ps1 ;"             
@@ -68,13 +66,6 @@ spec:
         - name: all-in-one
           projected:
             sources:
-            - secret:
-                name: ticketing-windows-users
-                items:
-                  - key: jobs
-                    path: users/jobs.pw
-                  - key: webuser
-                    path: users/webuser.pw
             - configMap:
                 name: ticketing-root-ca.crt
                 items:
@@ -104,4 +95,3 @@ spec:
                     path: Config/Deploy/Acc/Oracle.xml          
                   - key: Deploy.Acc.Windows.xml
                     path: Config/Deploy/Acc/Windows.xml          
-
