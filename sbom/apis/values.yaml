@@ -1,5 +1,5 @@
 repository: pptaz
-tagVersion: 0.0.8
+tagVersion: latest
 replication: true
 appReplicas: 1
 serviceType: ClusterIP
