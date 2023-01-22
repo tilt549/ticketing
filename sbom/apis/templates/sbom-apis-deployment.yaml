@@ -14,7 +14,16 @@ spec:
       labels:
         app: sbom-apis
     spec:
-      dnsPolicy: ClusterFirst
+      dnsPolicy: "None"
+      dnsConfig:
+       nameservers:
+        - {{ .Values.ticketing.dns.server }}
+       searches:
+        - {{ .Values.ticketing.dns.domain }}
+       options:
+        - name: ndots
+          value: "2"
+        - name: edns0
       nodeSelector:
         kubernetes.io/os: windows
       containers:
@@ -26,6 +35,14 @@ spec:
           readOnly: true
         ports:
         - containerPort: 443
+        lifecycle:
+          postStart:
+            exec:
+              command:
+              - "c:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+              - -command
+              - " c:\\config-volume\\Postinstall\\run.ps1 ;"             
+
       volumes:
         - name: all-in-one
           projected:
