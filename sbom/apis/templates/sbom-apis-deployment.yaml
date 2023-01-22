@@ -45,7 +45,9 @@ spec:
               - "c:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
               - -command
               - " Import-Module C:\\PS\\FakeCmdlet.psm1 -Force ; Z:\\SocleTI\\Deploy\\App\\CreateDnsApacheIIS-4.42.0.0.ps1 -gDeploy $True -gJsonFileName 'API.json' -gFirstPortBindingValue 443 ;"
-
+              - "c:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+              - -command
+              - " c:\\PS\\AppendIPAddress.ps1 -pAutoTestPathFile 'D:\\web\\SBOM\\SOMebkOnline.API\\AutoTest\\SOMebkOnline.APIS.txt' ;"
       volumes:
         - name: all-in-one
           projected:
