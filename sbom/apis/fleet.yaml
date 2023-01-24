@@ -31,7 +31,7 @@ targetCustomizations:
   helm:
     values:
       serviceType: ClusterIP
-      appReplicas: 2
+      appReplicas: 1
       ticketing:
         dns:
           server: 172.24.202.5
