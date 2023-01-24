@@ -34,8 +34,8 @@ targetCustomizations:
       appReplicas: 2
       ticketing:
         dns:
-          server: 192.168.100.104
-          domain: kube1.test
+          server: 172.24.202.5
+          domain: labo1.valm
   clusterSelector:
     matchLabels:
       env: test
