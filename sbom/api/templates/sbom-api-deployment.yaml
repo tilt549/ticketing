@@ -14,16 +14,7 @@ spec:
       labels:
         app: sbom-api
     spec:
-      dnsPolicy: "None"
-      dnsConfig:
-       nameservers:
-        - {{ .Values.ticketing.dns.server }}
-       searches:
-        - {{ .Values.ticketing.dns.domain }}
-       options:
-        - name: ndots
-          value: "2"
-        - name: edns0
+      dnsPolicy: ClusterFirst
       nodeSelector:
         kubernetes.io/os: windows
       containers:

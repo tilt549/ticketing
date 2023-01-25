@@ -7,6 +7,7 @@ targetCustomizations:
       serviceType: ClusterIP
       appReplicas: 1
       ticketing:
+        platform: -t
         dns:
           server: 192.168.100.104
           domain: kube1.dev
@@ -20,6 +21,7 @@ targetCustomizations:
       serviceType: ClusterIP
       appReplicas: 1
       ticketing:
+        platform: -t
         dns:
           server: 172.24.10.43
           domain: kube1.valm
