@@ -75,4 +75,5 @@ spec:
                   - key: Deploy.Acc.Oracle.xml
                     path: Config/Deploy/Acc/Oracle.xml          
                   - key: Deploy.Acc.Windows.xml
-                    path: Config/Deploy/Acc/Windows.xml          
+                    path: Config/Deploy/Acc/Windows.xml
+                    
