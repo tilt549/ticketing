@@ -19,7 +19,7 @@ spec:
         kubernetes.io/os: windows
       containers:
       - name: sbom-api
-        iimage: {{ .Values.repository }}/sbom-api:{{ .Values.tagVersion }}
+        image: {{ .Values.repository }}/sbom-api:{{ .Values.tagVersion }}
         volumeMounts:
         - name: all-in-one
           mountPath: "/config-volume"
