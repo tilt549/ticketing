@@ -19,7 +19,7 @@ spec:
         kubernetes.io/os: windows
       containers:
       - name: sbom-gui
-        image: {{ .Values.repository }}/sbom-gui
+        image: {{ .Values.repository }}/sbom-gui:{{ .Values.tagVersion }}
         volumeMounts:
         - name: all-in-one
           mountPath: "/config-volume"
@@ -47,13 +47,6 @@ spec:
         - name: all-in-one
           projected:
             sources:
-            - secret:
-                name: ticketing-windows-users
-                items:
-                  - key: jobs
-                    path: users/jobs.pw
-                  - key: webuser
-                    path: users/webuser.pw
             - configMap:
                 name: ticketing-root-ca.crt
                 items:

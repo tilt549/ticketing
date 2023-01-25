@@ -1,8 +1,10 @@
 repository: rancher.kube1.valm:5000
+tagVersion: latest
 replication: true
 appReplicas: 1
 serviceType: ClusterIP
 ticketing:
+  platform: -t
   dns:
     server: xxx.xxx.xxx.xxx
     domain: none.lan

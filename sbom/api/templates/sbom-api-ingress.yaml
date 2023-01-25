@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: sbil-api-k8s-t.{{ .Values.ticketing.dns.domain }}
+  - host: sbil-api-k8s{{ .Values.ticketing.platform }}.{{ .Values.ticketing.dns.domain }}
     http:
       paths:
       - backend:
@@ -20,5 +20,5 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - sbil-api-k8s-t.{{ .Values.ticketing.dns.domain }}
-    secretName: sbil-api-k8s-t.{{ .Values.ticketing.dns.domain }}
+    - sbil-api-k8s{{ .Values.ticketing.platform }}.{{ .Values.ticketing.dns.domain }}
+    secretName: ticketing-wildcard-cert
