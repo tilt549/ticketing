@@ -33,6 +33,7 @@ targetCustomizations:
       serviceType: ClusterIP
       appReplicas: 1
       ticketing:
+        platform: -t
         dns:
           server: 172.24.202.5
           domain: labo1.valm
