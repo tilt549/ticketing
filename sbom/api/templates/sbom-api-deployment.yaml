@@ -28,13 +28,6 @@ spec:
           readOnly: true
         ports:
         - containerPort: 80
-        lifecycle:
-          postStart:
-            exec:
-              command:
-              - "c:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
-              - -command
-              - " c:\\config-volume\\Postinstall\\run.ps1 ;"             
 
       volumes:
         - name: all-in-one
