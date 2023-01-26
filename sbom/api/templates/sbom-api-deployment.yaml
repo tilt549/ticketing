@@ -15,13 +15,13 @@ spec:
         app: sbom-api
     spec:
       dnsPolicy: ClusterFirst
+      imagePullSecrets:
+        - name: regcred
       nodeSelector:
         kubernetes.io/os: windows
       containers:
       - name: sbom-api
         image: {{ .Values.repository }}/sbom-apis:{{ .Values.tagVersion }}
-        imagePullSecrets:
-          - name: regcred
         volumeMounts:
         - name: all-in-one
           mountPath: "/config-volume"
