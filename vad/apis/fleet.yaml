@@ -20,6 +20,7 @@ targetCustomizations:
       serviceType: ClusterIP
       appReplicas: 1
       ticketing:
+        platform: -t
         dns:
           server: 172.24.10.43
           domain: kube1.valm
@@ -31,11 +32,12 @@ targetCustomizations:
   helm:
     values:
       serviceType: ClusterIP
-      appReplicas: 2
+      appReplicas: 1
       ticketing:
+        platform: -t
         dns:
-          server: 192.168.100.104
-          domain: kube1.test
+          server: 172.24.202.5
+          domain: labo1.valm
   clusterSelector:
     matchLabels:
       env: test

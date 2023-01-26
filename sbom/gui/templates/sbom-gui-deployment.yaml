@@ -14,16 +14,9 @@ spec:
       labels:
         app: sbom-gui
     spec:
-      dnsPolicy: "None"
-      dnsConfig:
-       nameservers:
-        - {{ .Values.ticketing.dns.server }}
-       searches:
-        - {{ .Values.ticketing.dns.domain }}
-       options:
-        - name: ndots
-          value: "2"
-        - name: edns0
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+        - name: regcred
       nodeSelector:
         kubernetes.io/os: windows
       containers:
@@ -84,4 +77,5 @@ spec:
                   - key: Deploy.Acc.Oracle.xml
                     path: Config/Deploy/Acc/Oracle.xml          
                   - key: Deploy.Acc.Windows.xml
-                    path: Config/Deploy/Acc/Windows.xml          
+                    path: Config/Deploy/Acc/Windows.xml
+                    

@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: sbil-api-k8s-t.{{ .Values.ticketing.dns.domain }}
+  - host: sbil-api-k8s{{ .Values.ticketing.platform }}.{{ .Values.ticketing.dns.domain }}
     http:
       paths:
       - backend:
@@ -18,7 +18,3 @@ spec:
               number: 80
         path: /SOMebkOnline.API(/|$)(.*)
         pathType: Prefix
-  tls:
-  - hosts:
-    - sbil-api-k8s-t.{{ .Values.ticketing.dns.domain }}
-    secretName: sbil-api-k8s-t.{{ .Values.ticketing.dns.domain }}
