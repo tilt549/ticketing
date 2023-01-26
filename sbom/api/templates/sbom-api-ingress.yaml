@@ -18,7 +18,3 @@ spec:
               number: 80
         path: /SOMebkOnline.API(/|$)(.*)
         pathType: Prefix
-  tls:
-  - hosts:
-    - sbil-api-k8s{{ .Values.ticketing.platform }}.{{ .Values.ticketing.dns.domain }}
-    secretName: ticketing-wildcard-cert
