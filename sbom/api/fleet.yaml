@@ -22,7 +22,7 @@ imageScans:
   #  name: dockerhub-secret 
 
   # Specify the scan interval
-  interval: 5m 
+  interval: 30s 
   
 targetCustomizations:
 - name: dev
