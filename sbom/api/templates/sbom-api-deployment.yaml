@@ -19,7 +19,9 @@ spec:
         kubernetes.io/os: windows
       containers:
       - name: sbom-api
-        image: index.docker.io/pptaz/sbom-api:latest # {"$imagescan": "test-scan"}
+        image: {{ .Values.repository }}/sbom-apis:{{ .Values.tagVersion }}
+        imagePullSecrets:
+          - name: regcred
         volumeMounts:
         - name: all-in-one
           mountPath: "/config-volume"
