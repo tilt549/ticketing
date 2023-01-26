@@ -28,22 +28,6 @@ spec:
           readOnly: true
         ports:
         - containerPort: 80
-        lifecycle:
-          postStart:
-            exec:
-              command:
-              - "c:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
-              - -command
-              - " c:\\config-volume\\Postinstall\\run.ps1 ;"             
-              - "c:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
-              - -command
-              - " Import-Module C:\\PS\\FakeCmdlet.psm1 -Force ; Z:\\SocleTI\\Deploy\\App\\CreateDnsApacheIIS-4.42.0.0.ps1 -gDeploy $True -gJsonFileName 'API.json' -gFirstPortBindingValue 80 ;"
-              - "c:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
-              - -command
-              - " c:\\PS\\AppendIPAddress.ps1 -pAutoTestPathFile 'D:\\web\\SBOM\\SOMebkOnline.API\\AutoTest\\SOMebkOnline.API.txt' ;"
-              - "c:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
-              - -command
-              - " Z:\\SocleTI\\Deploy\\Media\\deploy-2.33.0.0.ps1 $True 'API.json' 'reinstall' ;"
 
       volumes:
         - name: all-in-one
